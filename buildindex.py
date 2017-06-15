@@ -34,14 +34,14 @@ def handle(srcp, fbd, head, lkeep):
 			if not content in fbd:
 				rsf.append((head+"/"+content, content, ))
 	with open(srcp+"\\index.html", "w") as fwrt:
-		fwrt.write("<html>\n<head>\n<title>".encode("utf-8"))
+		fwrt.write("<html>\n<head>\n<title>anoFS</title>\n</head>\n<body>\n<p>".encode("utf-8"))
 		fwrt.write(buildhead(head, lkeep).encode("utf-8"))
-		fwrt.write("</title>\n</head>\n<body>\n<p>\n".encode("utf-8"))
+		fwrt.write("</p>".encode("utf-8"))
 		for pu in rsp:
-			fwrt.write("<a href=\""+pu[0]+"/index.html\">"+pu[-1]+"</a>/\n".encode("utf-8"))
+			fwrt.write("<p><a href=\""+pu[0]+"/index.html\">"+pu[-1]+"</a>/</p>\n".encode("utf-8"))
 		for fu in rsf:
-			fwrt.write("<a href=\""+fu[0]+"\">"+fu[-1]+"</a>\n".encode("utf-8"))
-		fwrt.write("</p>\n</body>\n</html>\n".encode("utf-8"))
+			fwrt.write("<p><a href=\""+fu[0]+"\">"+fu[-1]+"</a></p>\n".encode("utf-8"))
+		fwrt.write("</body>\n</html>\n".encode("utf-8"))
 
 if __name__=="__main__":
 	srcp = os.path.realpath(sys.argv[1].decode("gbk"))
