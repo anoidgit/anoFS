@@ -8,7 +8,7 @@ fbd = set(["LICENSE", "README.md", "buildindex.py", "robots.txt", "index.html"])
 def handle(srcp, fbd, head, lkeep):
 	def buildhead(hstr, lkeep):
 		his = hstr[:lkeep]
-		rs = ["<a href=\"", his, "/index.html\">/</a>"]
+		rs = ["<a href=\"", his, "\">/</a>"]
 		tmp = hstr[lkeep+1:].strip()
 		if tmp:
 			for tmpu in tmp.split("/"):
