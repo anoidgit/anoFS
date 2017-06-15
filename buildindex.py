@@ -7,16 +7,17 @@ fbd = set(["LICENSE", "README.md", "buildindex.py", "robots.txt", "index.html"])
 
 def handle(srcp, fbd, head, lkeep):
 	def buildhead(hstr, lkeep):
-		tmp = hstr[lkeep+1:].split("/")
 		his = hstr[:lkeep]
 		rs = ["<a href=\"", his, "/index.html\">/</a>"]
-		for tmpu in tmp:
-			his += "/" + tmpu
-			rs.append("<a href=\"")
-			rs.append(his)
-			rs.append("/index.html\">")
-			rs.append(tmpu)
-			rs.append("</a>/")
+		tmp = hstr[lkeep+1:].strip()
+		if tmp:
+			for tmpu in tmp.split("/"):
+				his += "/" + tmpu
+				rs.append("<a href=\"")
+				rs.append(his)
+				rs.append("/index.html\">")
+				rs.append(tmpu)
+				rs.append("</a>/")
 		return "".join(rs)
 	rsp = []
 	rsf = []
@@ -36,7 +37,7 @@ def handle(srcp, fbd, head, lkeep):
 	with open(srcp+"\\index.html", "w") as fwrt:
 		fwrt.write("<html>\n<head>\n<title>anoFS</title>\n</head>\n<body>\n<p>".encode("utf-8"))
 		fwrt.write(buildhead(head, lkeep).encode("utf-8"))
-		fwrt.write("</p>".encode("utf-8"))
+		fwrt.write("</p>\n".encode("utf-8"))
 		for pu in rsp:
 			fwrt.write("<p><a href=\""+pu[0]+"/index.html\">"+pu[-1]+"</a>/</p>\n".encode("utf-8"))
 		for fu in rsf:
