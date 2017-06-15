@@ -15,7 +15,7 @@ def handle(srcp, fbd, head):
 				if not his:
 					his = tmpu
 				else:
-					his += tmpu
+					his += "/" + tmpu
 				rs.append("/<a href=\"")
 				rs.append(his)
 				rs.append("/index.html\">")
@@ -38,7 +38,7 @@ def handle(srcp, fbd, head):
 				handle(newsrcp, fbd, newhead)
 		else:
 			if not content in fbd:
-				rsf.append((newhead, content, ))
+				rsf.append((head+"/"+content, content, ))
 	with open(srcp+"\\index.html", "w") as fwrt:
 		fwrt.write("<html>\n<head>\n<title>".encode("utf-8"))
 		fwrt.write(buildhead(head).encode("utf-8"))
