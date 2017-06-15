@@ -3,7 +3,7 @@
 import sys
 import os
 
-fbd = set(["LICENSE", "README.md", "buildindex.py", "index.html"])
+fbd = set(["LICENSE", "README.md", "buildindex.py", "robots.txt", "index.html"])
 
 def handle(srcp, fbd, head, lkeep):
 	def buildhead(hstr, lkeep):
