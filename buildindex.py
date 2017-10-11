@@ -45,6 +45,9 @@ def handle(srcp, fbd, head, lkeep):
 		fwrt.write("</body>\n</html>\n".encode("utf-8"))
 
 if __name__=="__main__":
-	srcp = os.path.realpath(sys.argv[1].decode("gbk"))
+	if len(sys.argv)>1:
+		srcp = os.path.realpath(sys.argv[1].decode("gbk"))
+	else:
+		srcp = "."
 	hname = "http://anofs.azurewebsites.net"
 	handle(srcp, fbd, hname, len(hname))
